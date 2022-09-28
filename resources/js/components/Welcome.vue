@@ -115,7 +115,6 @@ export default {
 </script>
 <style scoped>
 .main{
-    /*position: relative;*/
     display: flex;
     width: 1560px;
     height: 1024px;
@@ -123,7 +122,6 @@ export default {
     padding-left: 30px ;
 }
 .title{
-    /*position: absolute;*/
     width: 1350px;
     height: 30px;
     left: 30px;
@@ -157,7 +155,6 @@ export default {
     font-size: 20px;
 }
 .search{
-    /*position: absolute;*/
    display: flex;
     justify-content: space-between;
     width: 564px;
@@ -217,14 +214,6 @@ export default {
     border: 1px solid #DFE4EF;
 }
 .rectangle{
-    /*box-sizing: border-box;*/
-    /*position: relative;*/
-    /*display: flex;*/
-    /*justify-content: flex-start;*/
-    /*align-items: baseline;*/
-    /*width: 1190px;*/
-    /*height: 35px;*/
-    /*border-bottom: 1px solid #DFE4EF;*/
     display: flex;
     justify-content: space-between;
     align-items: baseline;
