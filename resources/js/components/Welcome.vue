@@ -22,16 +22,14 @@
             <div class="del"><img src="../../../public/images/Vector-4.jpg"></div>
         </div>
         <div class="cat1">
-            <div class="text">
-                <div class="vector"></div>
+            <div class="text" id="text">
+                <button type="button" class="vector" @click="showDropdown()"><img src="../../../public/images/Vector.jpg" ></button>
                 <p>Обязательные для всех</p>
                 <div class="icon-2">
                     <img src="../../../public/images/icon-1.jpg">
                     <img src="../../../public/images/icon-2.jpg">
                     <img class="img" src="../../../public/images/icon-3.jpg" >
                 </div>
-
-
             </div>
 
             <div class="events">
@@ -41,7 +39,9 @@
             </div>
 
         </div>
-
+        <div class="dropdown" v-if="display" >
+            <div class="dropbtn">salamalekum !</div>
+            </div>
         <div class="cat2">
 
             <div class="text">
@@ -108,8 +108,33 @@
 
 </template>
 <script>
+import "bootstrap/dist/css/bootstrap.min.css";
 export default {
-    name: 'welcome'
+    name: 'welcome',
+    data (){
+        return{
+            // show:'block',
+            display:false,
+            id:''
+        }
+    },
+    mounted() {
+        this.test()
+        // this.showDropdown()
+    },
+    methods:{
+        showDropdown(){
+                // this.show=!this.show
+                this.display=!this.display
+                console.log(77777777)
+
+
+        },
+        test(){
+            console.log(99999999999999)
+        }
+    },
+
 }
 
 </script>
@@ -166,6 +191,9 @@ export default {
 .search-1{
     display: flex;
     justify-content: space-between;
+    width: 120px;
+    padding: 4px;
+    margin: 2px;
 }
 .del{
     color: red;
@@ -219,6 +247,7 @@ export default {
     align-items: baseline;
     width: 1190px;
     height: 35px;
+    padding-left: 10px;
     border-bottom: 1px solid #DFE4EF;
 }
 .book{
@@ -226,8 +255,6 @@ export default {
     padding: 2px;
     width: 30px;
     height: 30px;
-    border: 1px solid #DFE4EF;
-    border-radius: 15px;
 }
 .new-type{
     text-align: center;
@@ -258,7 +285,7 @@ export default {
     display: flex;
     width: 100px;
     height: 30px;
-    margin-left: 771px;
+    margin-left: 785px;
     margin-right: 10px;
     margin-top: 9px;
     justify-content: space-between;
@@ -288,7 +315,38 @@ export default {
     height: 15px;
     margin-top: 1px;
 }
+.dropbtn {
+    width: 1190px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+}
 
 
 </style>
