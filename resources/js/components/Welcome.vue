@@ -19,11 +19,11 @@
             <input class="input" placeholder="Поиск" v-model="searchDoc" @input="search()" >
         </div>
 
-            <div class="del" :class="shoeX"  ><img  src="../../../public/images/Vector-4.jpg"></div>
+            <button class="del" :class="showX" @click="del" ><img  src="../../../public/images/Vector-4.jpg"></button>
         </div>
 
         <div class="cat1">
-            <div class="text" id="text">
+            <div class="btn">
                 <button type="button" class="vector" :class="{active: changeClass_1}"  @click="dropIt(1)"><img src="../../../public/images/Vector.jpg" ></button>
                 <p>Обязательные для всех </p>
                 <div class="icon-2">
@@ -41,18 +41,18 @@
 
         </div>
 
-            <transition-group name="slide">
+            <transition-group name="slide" >
                 <div class="box" v-if="isDropped_1" >
-                    <ul class="list">
-                        <li  class="text" draggable="true">
-                            {{str}}
+                    <ul class="list" @mouseleave="mixList">
+                        <li  class="text" draggable="true"  >
+                           <p>{{str}}</p>
                             <div class="events">
                                 <button><img src="../../../public/images/Vector-1.jpg"></button>
                                 <button><img src="../../../public/images/delete.jpg" ></button>
                                 <button><img src="../../../public/images/Vector-5.jpg"></button>
                             </div>
                         </li>
-                        <li classs="text" draggable="true" >
+                        <li classs="text" draggable="true">
                             ghghghghh
                             <div class="events">
                                 <button><img src="../../../public/images/Vector-1.jpg"></button>
@@ -67,7 +67,7 @@
 
         <div class="cat2">
 
-            <div class="text">
+            <div class="btn">
                 <button class="vector" :class="{active: changeClass_2}"  @click="dropIt(2)"><img src="../../../public/images/Vector.jpg" ></button>
                 <p>Обязательные для трудоустройства</p>
             </div>
@@ -81,9 +81,9 @@
         </div>
     <transition-group name="slide" >
         <div class="box"  v-if="isDropped_2">
-            <ul class="list">
+            <ul class="list" @mouseleave="">
                 <li class="text" draggable="true" >
-                    <p>fhjhjkkl</p>
+                    <p>DADDSjkkl</p>
                     <div class="events">
                         <button><img src="../../../public/images/Vector-1.jpg"></button>
                         <button><img src="../../../public/images/delete.jpg" ></button>
@@ -91,7 +91,7 @@
                     </div>
                 </li>
                 <li draggable="true" class="text" >
-                    <p>ghghghghh</p>
+                    <p>mnmnmmnnmmp</p>
                     <div class="events">
                         <button><img src="../../../public/images/Vector-1.jpg"></button>
                         <button><img src="../../../public/images/delete.jpg" ></button>
@@ -106,7 +106,7 @@
 
         <div class="cat3">
 
-            <div class="text" >
+            <div class="btn" >
                 <button class="vector" :class="{active: changeClass_3}"   @click="dropIt(3)"><img src="../../../public/images/Vector.jpg"></button>
                 <p>Специальные</p>
             </div>
@@ -117,9 +117,9 @@
             </div>
         </div>
             <transition-group name="slide" >
-                <div class="box"  v-if="isDropped_3">
-                <ul class="list">
-                    <li  draggable="true"  class="text">
+                <div class="box" v-if="isDropped_3" >
+                <ul class="list" @mouseleave="">
+                    <li  draggable="true" class="text">
                         <p>fhjhjkkl</p>
                         <div class="events">
                             <button><img src="../../../public/images/Vector-1.jpg"></button>
@@ -127,7 +127,7 @@
                             <button><img src="../../../public/images/Vector-5.jpg"></button>
                         </div>
                     </li>
-                    <li  draggable="true" class="text" >
+                    <li  draggable="true" class="text">
                         <p>ghghghghh</p>
                         <div class="events">
                             <button><img src="../../../public/images/Vector-1.jpg"></button>
@@ -138,8 +138,6 @@
                 </ul>
                 </div>
             </transition-group>
-
-<!--        </div>-->
 
         <div class="no-cat">
             <div class="rectangle">
@@ -187,19 +185,21 @@ export default {
             changeClass_2: false,
             changeClass_3: false,
             searchDoc: '',
-            shoeX: '',
-            params: [],
-            str: '',
+            showX: '',
+            str: 'hello',
             text: '',
         }
     },
 
     mounted() {
-        this.getLocal()
-        this.local()
         this.mixList()
     },
     methods: {
+
+        del(target){
+             this.searchDoc=''
+        },
+
         dropIt(num) {
             switch (num) {
                 case 1:
@@ -215,21 +215,13 @@ export default {
                     this.changeClass_3 = !this.changeClass_3
             }
         },
+
         search(event) {
             if (this.searchDoc.length > 0) {
-                this.shoeX = 'block';
-
+                this.showX = 'block';
             }
+        },
 
-        },
-        local() {
-            localStorage.setItem('key', 'hello');
-        },
-        getLocal() {
-            this.str = localStorage.getItem('key');
-            console.log(this.str);
-        },
-        // mix
         mixList() {
             const listElement = document.querySelectorAll(`.list`);
             console.log('test',listElement)
@@ -279,39 +271,34 @@ export default {
                     ) {
                         return;
                     }
-
                     list.insertBefore(activeElement, nextElement);
                 });
             }
         }
 
     },
-    update() {
-        // this.mixList()
-
-    }
 }
 </script>
-.box{
-<!--box-sizing: border-box;-->
-width: 1100px;
-height: 105px;
-}
+
 
 <style scoped>
+.box{
+    width: 1100px;
+    height: 105px;
+}
 .list{
     margin-top: 0px;
 }
 
 .selected {
-    opacity: 0.6;
+    opacity: 0.2;
 }
 button{
    background-color: white;
 }
 .input{
     margin-top: -12px;
-    width: 570px;
+    width: 1200px;
     height: 35px;
     border:none;
     outline: none;
@@ -375,8 +362,7 @@ ul{
     right: 89.26%;
     top: 3.52%;
     bottom: 93.36%;
-    margin-top: 13px;
-    margin-right: 50px;
+    margin-: 13px;
     font-family: 'Fira Sans';
     font-style: normal;
     font-weight: 500;
@@ -397,7 +383,6 @@ ul{
     justify-content: space-between;
     width: 564px;
     height: 30px;
-    margin-top: 14px;
     left: 31px;
     top: 86px;
     border-bottom: 1px solid #0066ff;
@@ -518,7 +503,12 @@ ul{
     align-items: baseline;
     margin-top: -1px;
 }
-
+.btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: -1px;
+}
 .icon-1{
     width: 22px;
     height: 8px;
@@ -535,7 +525,7 @@ ul{
 .img{
     width: 14px;
     height: 15px;
-    margin-top: 1px;
+    margin-top: 0px;
 }
 
 
