@@ -81,7 +81,7 @@
         </div>
     <transition-group name="slide" >
         <div class="box"  v-if="isDropped_2">
-            <ul class="list" @mouseleave="">
+            <ul class="list" @mouseleave="mixList">
                 <li class="text" draggable="true" >
                     <p>DADDSjkkl</p>
                     <div class="events">
@@ -118,7 +118,7 @@
         </div>
             <transition-group name="slide" >
                 <div class="box" v-if="isDropped_3" >
-                <ul class="list" @mouseleave="">
+                <ul class="list" @mouseleave="mixList">
                     <li  draggable="true" class="text">
                         <p>fhjhjkkl</p>
                         <div class="events">
@@ -191,9 +191,6 @@ export default {
         }
     },
 
-    mounted() {
-        this.mixList()
-    },
     methods: {
 
         del(target){
